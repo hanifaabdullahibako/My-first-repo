@@ -7,18 +7,21 @@
   <meta name="description" content="Portfolio of Hanifa, a junior developer, graphic designer, and AI enthusiast based in Abuja, Nigeria." />
   <style>
     :root {
-      --bg: #fffafc;
-      --surface: #ffffff;
-      --surface-soft: #f8f3ff;
-      --primary: #7c5cff;
-      --primary-dark: #4b3abf;
-      --secondary: #ff6b8a;
-      --secondary-soft: #ffe8ef;
-      --text: #1f2430;
-      --muted: #5d6472;
-      --line: #ece8ff;
-      --shadow: 0 18px 40px rgba(100, 79, 170, 0.12);
-      --radius: 22px;
+      --bg: #1e1e2e;
+      --bg-soft: #26263b;
+      --surface: rgba(34, 34, 49, 0.96);
+      --surface-soft: #2c2c3d;
+      --primary: #a855f7;
+      --primary-dark: #7c3aed;
+      --secondary: #ff7eb6;
+      --secondary-soft: rgba(255, 126, 182, 0.14);
+      --green: #34d399;
+      --blue: #60a5fa;
+      --text: #f9f4ff;
+      --muted: #c9c3d7;
+      --line: rgba(255, 255, 255, 0.08);
+      --shadow: 0 18px 40px rgba(168, 85, 247, 0.15);
+      --radius: 20px;
     }
 
     * { box-sizing: border-box; }
@@ -28,7 +31,7 @@
     body {
       margin: 0;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(180deg, #fffafc 0%, #f7f6ff 100%);
+      background: radial-gradient(circle at top, #2a213d 0%, var(--bg) 36%, #171722 100%);
       color: var(--text);
       line-height: 1.7;
     }
@@ -46,9 +49,9 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      backdrop-filter: blur(12px);
-      background: rgba(255, 250, 252, 0.82);
-      border-bottom: 1px solid rgba(124, 92, 255, 0.08);
+      backdrop-filter: blur(14px);
+      background: rgba(30, 30, 46, 0.78);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .nav {
@@ -59,9 +62,9 @@
     }
 
     .brand {
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      color: var(--primary-dark);
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      color: #f5d9ff;
       font-size: 1.05rem;
     }
 
@@ -78,32 +81,37 @@
       transition: color 0.2s ease;
     }
 
-    .nav-links a:hover { color: var(--primary); }
+    .nav-links a:hover { color: #ffffff; }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      background: linear-gradient(135deg, var(--secondary), #ff8da1);
+      background: linear-gradient(135deg, var(--secondary), #ff8db1);
       color: white;
       border: none;
       border-radius: 999px;
       padding: 14px 22px;
       font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 10px 20px rgba(255, 107, 138, 0.18);
+      box-shadow: 0 10px 20px rgba(255, 126, 182, 0.2);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 25px rgba(255, 107, 138, 0.24);
+      box-shadow: 0 12px 25px rgba(255, 126, 182, 0.28);
     }
 
     .btn.secondary {
-      background: var(--primary);
-      box-shadow: 0 12px 25px rgba(124, 92, 255, 0.2);
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      box-shadow: 0 12px 25px rgba(168, 85, 247, 0.22);
+    }
+
+    .btn.ai {
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      box-shadow: 0 12px 25px rgba(52, 211, 153, 0.2);
     }
 
     .hero {
@@ -119,9 +127,9 @@
 
     .badge {
       display: inline-block;
-      background: var(--secondary-soft);
-      color: var(--secondary);
-      border: 1px solid rgba(255, 107, 138, 0.12);
+      background: rgba(255, 126, 182, 0.1);
+      color: #ffb7d0;
+      border: 1px solid rgba(255, 126, 182, 0.18);
       border-radius: 999px;
       padding: 8px 14px;
       font-weight: 700;
@@ -139,7 +147,7 @@
     }
 
     .highlight {
-      color: var(--primary);
+      color: #e6b6ff;
     }
 
     .hero p {
@@ -165,17 +173,17 @@
 
     .mini-card {
       min-width: 140px;
-      background: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--line);
       border-radius: 16px;
       padding: 16px 18px;
-      box-shadow: 0 8px 20px rgba(81, 68, 146, 0.04);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
     }
 
     .mini-card strong {
       display: block;
       font-size: 1.35rem;
-      color: var(--primary-dark);
+      color: #f5d9ff;
       margin-bottom: 3px;
     }
 
@@ -186,15 +194,15 @@
 
     .profile-card {
       position: relative;
-      background: linear-gradient(135deg, rgba(124,92,255,0.1), rgba(255,107,138,0.04));
-      border: 1px solid rgba(124,92,255,0.12);
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.12), rgba(255, 126, 182, 0.08));
+      border: 1px solid rgba(168, 85, 247, 0.18);
       border-radius: 30px;
       padding: 26px;
       box-shadow: var(--shadow);
     }
 
     .profile-visual {
-      background: linear-gradient(135deg, rgba(124,92,255,0.15), rgba(255,107,138,0.2));
+      background: linear-gradient(135deg, rgba(168,85,247,0.18), rgba(255,126,182,0.12));
       border-radius: 24px;
       min-height: 420px;
       display: flex;
@@ -209,7 +217,7 @@
       content: "";
       position: absolute;
       border-radius: 50%;
-      background: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
     }
 
     .profile-visual::before {
@@ -232,24 +240,24 @@
       width: 220px;
       height: 220px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), #a292ff);
+      background: linear-gradient(135deg, var(--primary), #d18cff);
       display: grid;
       place-items: center;
       color: white;
       font-size: 5rem;
       font-weight: 800;
-      box-shadow: 0 20px 38px rgba(124, 92, 255, 0.28);
+      box-shadow: 0 20px 38px rgba(168, 85, 247, 0.32);
     }
 
     .floating-tag {
       position: absolute;
-      background: rgba(255,255,255,0.9);
-      border: 1px solid rgba(124,92,255,0.08);
+      background: rgba(21, 22, 34, 0.8);
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 14px;
       padding: 12px 14px;
-      color: var(--primary-dark);
+      color: #f1ddff;
       font-weight: 700;
-      box-shadow: 0 12px 25px rgba(70, 63, 109, 0.12);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
     }
 
     .tag-one { top: 26px; left: 18px; }
@@ -271,6 +279,7 @@
       margin: 0;
       font-size: clamp(1.8rem, 3vw, 2.6rem);
       letter-spacing: -0.04em;
+      color: #fff3ff;
     }
 
     .section-heading p {
@@ -290,7 +299,7 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 26px;
-      box-shadow: 0 16px 35px rgba(79, 62, 124, 0.04);
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.12);
     }
 
     .panel p {
@@ -307,9 +316,9 @@
     }
 
     .strength-list span {
-      background: var(--surface-soft);
-      color: var(--primary-dark);
-      border: 1px solid rgba(124,92,255,0.15);
+      background: rgba(168, 85, 247, 0.1);
+      color: #f1ddff;
+      border: 1px solid rgba(168, 85, 247, 0.18);
       border-radius: 999px;
       padding: 8px 12px;
       font-weight: 700;
@@ -346,14 +355,14 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 22px;
-      box-shadow: 0 14px 30px rgba(79, 62, 124, 0.04);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.1);
     }
 
     .skill-card h3 {
       margin-top: 0;
       margin-bottom: 12px;
       font-size: 1.18rem;
-      color: var(--primary-dark);
+      color: #f5d9ff;
     }
 
     .tags {
@@ -364,80 +373,121 @@
 
     .tags span {
       display: inline-block;
-      background: #f4f0ff;
-      color: var(--primary);
+      background: rgba(168, 85, 247, 0.12);
+      color: #f0d5ff;
       padding: 8px 12px;
       border-radius: 12px;
       font-size: 0.8rem;
       font-weight: 700;
+      border: 1px solid rgba(168, 85, 247, 0.12);
     }
 
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 22px;
     }
 
     .project-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 22px;
-      box-shadow: 0 16px 33px rgba(93, 75, 133, 0.05);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 35px rgba(93, 75, 133, 0.08);
-    }
-
-    .project-card .thumb {
-      height: 180px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, rgba(124,92,255,0.15), rgba(255,107,138,0.16));
-      margin-bottom: 18px;
+      background: linear-gradient(180deg, rgba(38,38,59,0.96), rgba(29,29,42,0.96));
+      border: 1px solid rgba(168, 85, 247, 0.18);
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: 0 14px 30px rgba(17, 15, 30, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
       position: relative;
       overflow: hidden;
     }
 
-    .project-card .thumb::before,
-    .project-card .thumb::after {
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 22px 45px rgba(168, 85, 247, 0.18);
+      border-color: rgba(255, 126, 182, 0.2);
+    }
+
+    .project-card::before {
       content: "";
       position: absolute;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.55);
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 140px;
+      background: linear-gradient(135deg, rgba(168,85,247,0.12), rgba(255,126,182,0.1));
+      pointer-events: none;
     }
 
-    .project-card .thumb::before {
-      width: 60%;
-      height: 24px;
-      top: 30px;
-      left: 20px;
+    .project-visual {
+      position: relative;
+      z-index: 1;
+      height: 170px;
+      border-radius: 18px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 4.2rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: inset 0 0 40px rgba(255,255,255,0.08);
     }
 
-    .project-card .thumb::after {
-      width: 52%;
-      height: 90px;
-      bottom: 18px;
-      left: 20px;
-      border-radius: 16px;
+    .project-visual.game {
+      background: linear-gradient(135deg, rgba(168,85,247,0.4), rgba(255,126,182,0.46));
+    }
+
+    .project-visual.ai {
+      background: linear-gradient(135deg, rgba(24, 196, 126, 0.42), rgba(96, 165, 250, 0.42));
     }
 
     .project-card h3 {
+      position: relative;
+      z-index: 1;
       margin: 0 0 10px;
-      font-size: 1.2rem;
-      color: var(--text);
+      font-size: 1.4rem;
+      color: #fff1ff;
     }
 
     .project-card p {
+      position: relative;
+      z-index: 1;
       margin: 0 0 14px;
       color: var(--muted);
     }
 
-    .project-card a {
-      color: var(--primary);
+    .project-tags {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .project-tags span {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      color: #f5d9ff;
+      font-size: 0.78rem;
       font-weight: 700;
+      border-radius: 999px;
+      padding: 7px 10px;
+    }
+
+    .project-card .btn {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      margin-top: 6px;
+    }
+
+    .project-card .btn.game-btn {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+    }
+
+    .project-card .btn.ai-btn {
+      background: linear-gradient(135deg, var(--green), var(--blue));
     }
 
     .contact-wrap {
@@ -448,11 +498,11 @@
     }
 
     .contact-box {
-      background: linear-gradient(135deg, #7c5cff 0%, #a38df5 100%);
+      background: linear-gradient(135deg, #8b5cf6 0%, #ff7eb6 100%);
       color: white;
       border-radius: 30px;
       padding: 28px;
-      box-shadow: 0 16px 35px rgba(124, 92, 255, 0.2);
+      box-shadow: 0 16px 35px rgba(168, 85, 247, 0.22);
     }
 
     .contact-box h3 {
@@ -488,7 +538,7 @@
       border-radius: 20px;
       padding: 18px 20px;
       color: var(--text);
-      box-shadow: 0 14px 28px rgba(70, 63, 109, 0.05);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.1);
     }
 
     .icon {
@@ -497,14 +547,14 @@
       border-radius: 14px;
       display: grid;
       place-items: center;
-      background: linear-gradient(135deg, rgba(124,92,255,0.12), rgba(255,107,138,0.18));
-      color: var(--primary-dark);
+      background: linear-gradient(135deg, rgba(168,85,247,0.14), rgba(255,126,182,0.2));
+      color: #f5d9ff;
       font-weight: 800;
       font-size: 1.15rem;
     }
 
     .contact-item a {
-      color: var(--primary-dark);
+      color: #f5d9ff;
       font-weight: 700;
     }
 
@@ -697,30 +747,31 @@
     <section id="projects" class="section">
       <div class="container">
         <div class="section-heading">
-          <h2>Featured Work</h2>
-          <p>Creative problem-solving, clean design, and growing technical foundations for real-world digital projects.</p>
+          <h2>Projects</h2>
+          <p>Live apps I’ve built and designed to combine creative thinking, gameplay, and AI-driven problem solving.</p>
         </div>
 
         <div class="projects-grid">
           <article class="project-card">
-            <div class="thumb" aria-hidden="true"></div>
-            <h3>Portfolio Website</h3>
-            <p>A clean, modern portfolio site designed to highlight my developer and design identity.</p>
-            <a href="#contact">Get in touch</a>
+            <div class="project-visual game" aria-hidden="true">🧠</div>
+            <h3>BRAIN BOX - Mind Master</h3>
+            <p>Brain training game with 3 levels - 3x3 recall, Stroop blitz, and symbol math, complete with leaderboard, lives, and timer.</p>
+            <div class="project-tags">
+              <span>JavaScript</span>
+              <span>Game Dev</span>
+            </div>
+            <a class="btn game-btn" href="https://8b6b68ab.mydala.app" target="_blank" rel="noreferrer">🎮 Play Game</a>
           </article>
 
           <article class="project-card">
-            <div class="thumb" aria-hidden="true"></div>
-            <h3>Graphic Design Concepts</h3>
-            <p>Design work focused on branding, layouts, and creative visuals for digital-first experiences.</p>
-            <a href="#contact">Discuss a project</a>
-          </article>
-
-          <article class="project-card">
-            <div class="thumb" aria-hidden="true"></div>
-            <h3>AI & Product Ideas</h3>
-            <p>Exploring AI-powered tools and user-centered concepts that combine technology with design.</p>
-            <a href="#contact">Collaborate</a>
+            <div class="project-visual ai" aria-hidden="true">🎓</div>
+            <h3>Student Risk Predictor</h3>
+            <p>AI-powered tool that predicts student performance and risk level to help teachers intervene early using machine learning.</p>
+            <div class="project-tags">
+              <span>AI / ML</span>
+              <span>Python</span>
+            </div>
+            <a class="btn ai-btn" href="https://4fad4226.mydala.app" target="_blank" rel="noreferrer">📊 Try AI App</a>
           </article>
         </div>
       </div>
