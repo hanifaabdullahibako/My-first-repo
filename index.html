@@ -1,57 +1,770 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Hanifa - Portfolio</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body { font-family: 'Segoe UI', sans-serif; margin:0; background:#fff5f8; color:#333; }
-.header { background: linear-gradient(135deg, #ff6a8a, #8a6cff); color:white; padding:60px 20px; text-align:center; }
-.header h1 { margin:0; font-size:36px; }
-.header p { opacity:0.9; font-size:18px; }
-.section { max-width:700px; margin:30px auto; background:white; padding:25px; border-radius:15px; box-shadow:0 4px 15px rgba(0,0,0,0.07); }
-h2 { color:#8a6cff; border-left:4px solid #ff6a8a; padding-left:10px; }
-.skills span { display:inline-block; background:#f0e6ff; color:#6a4c93; padding:8px 14px; border-radius:20px; margin:5px; font-size:14px; }
-a { color:#8a6cff; text-decoration:none; font-weight:bold; }
-.btn { display:inline-block; margin-top:15px; background:#ff6a8a; color:white; padding:12px 25px; border-radius:25px; }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hanifa | Junior Developer & Designer</title>
+  <meta name="description" content="Portfolio of Hanifa, a junior developer, graphic designer, and AI enthusiast based in Abuja, Nigeria." />
+  <style>
+    :root {
+      --bg: #fffafc;
+      --surface: #ffffff;
+      --surface-soft: #f8f3ff;
+      --primary: #7c5cff;
+      --primary-dark: #4b3abf;
+      --secondary: #ff6b8a;
+      --secondary-soft: #ffe8ef;
+      --text: #1f2430;
+      --muted: #5d6472;
+      --line: #ece8ff;
+      --shadow: 0 18px 40px rgba(100, 79, 170, 0.12);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(180deg, #fffafc 0%, #f7f6ff 100%);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    a { text-decoration: none; }
+
+    .container {
+      width: min(1100px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(255, 250, 252, 0.82);
+      border-bottom: 1px solid rgba(124, 92, 255, 0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: var(--primary-dark);
+      font-size: 1.05rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover { color: var(--primary); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--secondary), #ff8da1);
+      color: white;
+      border: none;
+      border-radius: 999px;
+      padding: 14px 22px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(255, 107, 138, 0.18);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(255, 107, 138, 0.24);
+    }
+
+    .btn.secondary {
+      background: var(--primary);
+      box-shadow: 0 12px 25px rgba(124, 92, 255, 0.2);
+    }
+
+    .hero {
+      padding: 64px 0 40px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 34px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--secondary-soft);
+      color: var(--secondary);
+      border: 1px solid rgba(255, 107, 138, 0.12);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 18px 0 16px;
+      font-size: clamp(2.6rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+      color: var(--text);
+    }
+
+    .highlight {
+      color: var(--primary);
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.06rem;
+      max-width: 640px;
+      margin: 0 0 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .mini-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .mini-card {
+      min-width: 140px;
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px 18px;
+      box-shadow: 0 8px 20px rgba(81, 68, 146, 0.04);
+    }
+
+    .mini-card strong {
+      display: block;
+      font-size: 1.35rem;
+      color: var(--primary-dark);
+      margin-bottom: 3px;
+    }
+
+    .mini-card span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .profile-card {
+      position: relative;
+      background: linear-gradient(135deg, rgba(124,92,255,0.1), rgba(255,107,138,0.04));
+      border: 1px solid rgba(124,92,255,0.12);
+      border-radius: 30px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .profile-visual {
+      background: linear-gradient(135deg, rgba(124,92,255,0.15), rgba(255,107,138,0.2));
+      border-radius: 24px;
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-visual::before,
+    .profile-visual::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.18);
+    }
+
+    .profile-visual::before {
+      width: 240px;
+      height: 240px;
+      right: -50px;
+      top: -18px;
+    }
+
+    .profile-visual::after {
+      width: 200px;
+      height: 200px;
+      left: -40px;
+      bottom: -20px;
+    }
+
+    .avatar {
+      position: relative;
+      z-index: 1;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), #a292ff);
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 5rem;
+      font-weight: 800;
+      box-shadow: 0 20px 38px rgba(124, 92, 255, 0.28);
+    }
+
+    .floating-tag {
+      position: absolute;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(124,92,255,0.08);
+      border-radius: 14px;
+      padding: 12px 14px;
+      color: var(--primary-dark);
+      font-weight: 700;
+      box-shadow: 0 12px 25px rgba(70, 63, 109, 0.12);
+    }
+
+    .tag-one { top: 26px; left: 18px; }
+    .tag-two { right: 18px; bottom: 26px; }
+
+    .section {
+      padding: 48px 0;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 26px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      letter-spacing: -0.04em;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 520px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: 0 16px 35px rgba(79, 62, 124, 0.04);
+    }
+
+    .panel p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .strength-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .strength-list span {
+      background: var(--surface-soft);
+      color: var(--primary-dark);
+      border: 1px solid rgba(124,92,255,0.15);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 700;
+      font-size: 0.86rem;
+    }
+
+    .info-card {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .info-row strong {
+      color: var(--text);
+    }
+
+    .skills-layout {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: 0 14px 30px rgba(79, 62, 124, 0.04);
+    }
+
+    .skill-card h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 1.18rem;
+      color: var(--primary-dark);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tags span {
+      display: inline-block;
+      background: #f4f0ff;
+      color: var(--primary);
+      padding: 8px 12px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: 0 16px 33px rgba(93, 75, 133, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 35px rgba(93, 75, 133, 0.08);
+    }
+
+    .project-card .thumb {
+      height: 180px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(124,92,255,0.15), rgba(255,107,138,0.16));
+      margin-bottom: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card .thumb::before,
+    .project-card .thumb::after {
+      content: "";
+      position: absolute;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.55);
+    }
+
+    .project-card .thumb::before {
+      width: 60%;
+      height: 24px;
+      top: 30px;
+      left: 20px;
+    }
+
+    .project-card .thumb::after {
+      width: 52%;
+      height: 90px;
+      bottom: 18px;
+      left: 20px;
+      border-radius: 16px;
+    }
+
+    .project-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      color: var(--text);
+    }
+
+    .project-card p {
+      margin: 0 0 14px;
+      color: var(--muted);
+    }
+
+    .project-card a {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .contact-box {
+      background: linear-gradient(135deg, #7c5cff 0%, #a38df5 100%);
+      color: white;
+      border-radius: 30px;
+      padding: 28px;
+      box-shadow: 0 16px 35px rgba(124, 92, 255, 0.2);
+    }
+
+    .contact-box h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      letter-spacing: -0.04em;
+    }
+
+    .contact-box p {
+      margin: 0 0 18px;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .contact-box .btn {
+      background: white;
+      color: var(--primary-dark);
+      box-shadow: none;
+    }
+
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px 20px;
+      color: var(--text);
+      box-shadow: 0 14px 28px rgba(70, 63, 109, 0.05);
+    }
+
+    .icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(124,92,255,0.12), rgba(255,107,138,0.18));
+      color: var(--primary-dark);
+      font-weight: 800;
+      font-size: 1.15rem;
+    }
+
+    .contact-item a {
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+
+    footer {
+      padding: 30px 0 60px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid,
+      .contact-wrap,
+      .skills-layout,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-visual {
+        min-height: 330px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .nav {
+        flex-direction: column;
+        justify-content: center;
+        gap: 12px;
+        padding: 14px 0;
+      }
+
+      .nav-links {
+        justify-content: center;
+      }
+
+      .hero {
+        padding-top: 36px;
+      }
+
+      .section-heading {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      h1 {
+        letter-spacing: -0.04em;
+      }
+    }
+  </style>
 </head>
 <body>
+  <header class="topbar">
+    <div class="container nav">
+      <div class="brand">HANIFA</div>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<div class="header">
-<h1>Hi, I'm Hanifa 👋</h1>
-<p>FCT Abuja, Nigeria | Aspiring Developer, Computer scientist, Graphic designer,An AI engineer</p>
-<a class="btn" href="#contact">Contact Me</a>
-</div>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="badge">Junior Developer • Designer • AI Enthusiast</span>
+          <h1>Hi, I'm <span class="highlight">Hanifa</span> 👋</h1>
+          <p>
+            I’m a creative tech learner based in FCT Abuja, Nigeria, focused on web development,
+            graphic design, and AI-driven product ideas. I enjoy turning concepts into clean,
+            usable digital experiences.
+          </p>
 
-<div class="section">
-<h2>About Me</h2>
-<p>Hello! I'm Hanifa, learning web development on GitHub. This is my first ever website. I love building beautiful things on the internet and learning new tech every day.</p>
-</div>
+          <div class="hero-actions">
+            <a class="btn" href="#projects">View My Work</a>
+            <a class="btn secondary" href="mailto:abdullahihanifa586@gmail.com">Email Me</a>
+          </div>
 
-<div class="section">
-<h2>My Skills</h2>
-<div class="skills">
-<span>HTML</span>
-<span>GitHub</span>
-<span>GitHub Pages</span>
-<span>Learning CSS</span>
-<span>Learning JavaScript</span>
-<span>graphic design </span>
-<span>UI/UX</span>
-<span>Python</span>
-</div>
-</div>
+          <div class="mini-stats">
+            <div class="mini-card">
+              <strong>1+</strong>
+              <span>Years Learning</span>
+            </div>
+            <div class="mini-card">
+              <strong>3+</strong>
+              <span>Core Skills</span>
+            </div>
+            <div class="mini-card">
+              <strong>100%</strong>
+              <span>Creative Mindset</span>
+            </div>
+          </div>
+        </div>
 
-<div class="section" id="contact">
-<h2>Contact Me</h2>
-<p>Let's work together! I'm open to Graphic Design, UI/UX, and AI projects.</p>
-<p>📧 Email: <a href="mailto:abdullahihanifa586@gmail.com">abdullahihanifa586@gmail.com</a></p>
-<p>🔗 GitHub: <a href="https://github.com/hanifaabdullahibako">github.com/hanifaabdullahibako</a></p>
-<p>📍 FCT Abuja, Nigeria</p>
-<br>
-<a class="btn" href="mailto:abdullahihanifa586@gmail.com" style="background:#8a6cff;">📩 Email Me Now</a>
-<a class="btn" href="https://github.com/hanifaabdullahibako">View GitHub</a>
-</div>
+        <div class="profile-card">
+          <div class="profile-visual" aria-label="Portfolio profile illustration">
+            <div class="avatar">H</div>
+            <div class="floating-tag tag-one">UI/UX</div>
+            <div class="floating-tag tag-two">AI Projects</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>About Me</h2>
+          <p>I’m passionate about building meaningful digital experiences and learning practical skills that bridge design and technology.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="panel">
+            <p>
+              Hello! I’m Hanifa, a junior developer and aspiring digital creator who enjoys learning web development,
+              design systems, and AI concepts. I’m currently building my foundation in front-end development while also
+              exploring the intersection of creativity and intelligent technology.
+            </p>
+            <p>
+              I love turning ideas into beautiful, user-friendly products and improving my skills every day through practice,
+              design thinking, and problem-solving.
+            </p>
+            <div class="strength-list">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>GitHub</span>
+              <span>Graphic Design</span>
+              <span>UI/UX</span>
+              <span>AI</span>
+              <span>Python</span>
+            </div>
+          </div>
+
+          <div class="panel info-card">
+            <div class="info-row"><span>Location</span><strong>FCT Abuja, Nigeria</strong></div>
+            <div class="info-row"><span>Focus</span><strong>Junior Web Developer</strong></div>
+            <div class="info-row"><span>Specialty</span><strong>Graphic Design & AI</strong></div>
+            <div class="info-row"><span>Career Goal</span><strong>Build impactful digital products</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>My Skills</h2>
+          <p>I combine creative design thinking with growing technical knowledge to build polished digital experiences.</p>
+        </div>
+
+        <div class="skills-layout">
+          <div class="skill-card">
+            <h3>Development</h3>
+            <div class="tags">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+              <span>GitHub</span>
+              <span>GitHub Pages</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h3>Design</h3>
+            <div class="tags">
+              <span>Brand Design</span>
+              <span>UI/UX</span>
+              <span>Layouts</span>
+              <span>Visual Storytelling</span>
+              <span>Mockups</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h3>AI & Creative Tech</h3>
+            <div class="tags">
+              <span>AI Concepts</span>
+              <span>Prompt Design</span>
+              <span>Automation</span>
+              <span>Product Ideas</span>
+              <span>Python</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Featured Work</h2>
+          <p>Creative problem-solving, clean design, and growing technical foundations for real-world digital projects.</p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="thumb" aria-hidden="true"></div>
+            <h3>Portfolio Website</h3>
+            <p>A clean, modern portfolio site designed to highlight my developer and design identity.</p>
+            <a href="#contact">Get in touch</a>
+          </article>
+
+          <article class="project-card">
+            <div class="thumb" aria-hidden="true"></div>
+            <h3>Graphic Design Concepts</h3>
+            <p>Design work focused on branding, layouts, and creative visuals for digital-first experiences.</p>
+            <a href="#contact">Discuss a project</a>
+          </article>
+
+          <article class="project-card">
+            <div class="thumb" aria-hidden="true"></div>
+            <h3>AI & Product Ideas</h3>
+            <p>Exploring AI-powered tools and user-centered concepts that combine technology with design.</p>
+            <a href="#contact">Collaborate</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container contact-wrap">
+        <div class="contact-box">
+          <h3>Let’s build something meaningful.</h3>
+          <p>I’m open to graphic design, web development, UI/UX, and AI-related opportunities.</p>
+          <a class="btn" href="mailto:abdullahihanifa586@gmail.com">📩 Email Me</a>
+        </div>
+
+        <div class="contact-list">
+          <div class="contact-item">
+            <div class="icon">✉</div>
+            <div>
+              <strong>Email</strong><br>
+              <a href="mailto:abdullahihanifa586@gmail.com">abdullahihanifa586@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="icon">GH</div>
+            <div>
+              <strong>GitHub</strong><br>
+              <a href="https://github.com/hanifaabdullahibako" target="_blank" rel="noreferrer">github.com/hanifaabdullahibako</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="icon">📍</div>
+            <div>
+              <strong>Location</strong><br>
+              FCT Abuja, Nigeria
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2026 Hanifa | Junior Developer & Designer</div>
+  </footer>
 </body>
 </html>
